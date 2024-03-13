@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 
-# rm -rf /usr/src/mytonctrl
-# mv /usr/src/mytonctrl_fixes /usr/src/mytonctrl
-
 echo "Starting validator and mytoncore"
 systemctl start validator
 systemctl start mytoncore
