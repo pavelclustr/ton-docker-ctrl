@@ -4,7 +4,7 @@ services:
     image: ton-node:latest
     build:
       context: .
-      dockerfile: Dockerfile.local
+      dockerfile: Dockerfile
     restart: always
     init: true
     tty: true
@@ -13,8 +13,10 @@ services:
     network_mode: host
     secrets:
       - config.json
-volumes:
-  ton-db:
+    environment:
+      GLOBAL_CONFIG_URL: ${GLOBAL_CONFIG_URL}
 secrets:
   config.json:
     file: private/config.json
+volumes:
+  ton-db:
