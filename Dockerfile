@@ -13,8 +13,8 @@ RUN apt-get --yes install python3-dev python3-pip python3-wheel
 # install systemctl
 RUN wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py \
      -O /usr/bin/systemctl && chmod +x /usr/bin/systemctl
-RUN wget https://raw.githubusercontent.com/ton-blockchain/mytonctrl/master/scripts/install.sh 
-RUN /bin/bash install.sh -i -m full
+RUN wget https://raw.githubusercontent.com/ton-blockchain/mytonctrl/mytonctrl2/scripts/install.sh 
+RUN /bin/bash install.sh -i -b mytonctrl2 -m full
 
 RUN apt install --yes nano htop iproute2
 
