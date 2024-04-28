@@ -8,7 +8,7 @@ if [ "$IGNORE_MINIMAL_REQS" == "true" ]; then
     I_FLAG="-i";
 fi
 
-if [ "$DUMP" == "true" ] ; then 
+if [ "$DUMP" == "true" ] ; then
     D_FLAG="-d";
 fi
 

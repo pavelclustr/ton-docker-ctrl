@@ -15,8 +15,8 @@ ADD scripts/ /scripts/
 RUN wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py \
      -O /usr/bin/systemctl && chmod +x /usr/bin/systemctl
 
-# Install mytonstrl
-RUN wget https://raw.githubusercontent.com/ton-blockchain/mytonctrl/mytonctrl2/scripts/install.sh 
+# Install mytonctrl
+RUN wget https://raw.githubusercontent.com/ton-blockchain/mytonctrl/mytonctrl2/scripts/install.sh
 RUN /bin/bash /scripts/eval_and_install.sh
 
 # Patch mytoncrtl

@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.3"
 services:
   ton-node:
     image: ton-node:latest
@@ -11,7 +11,6 @@ services:
         IGNORE_MINIMAL_REQS: ${IGNORE_MINIMAL_REQS}
         DUMP: ${DUMP}
     restart: always
-    init: true
     tty: true
     volumes:
       - ton-db:/var/ton-work/db
