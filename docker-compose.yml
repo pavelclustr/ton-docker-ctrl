@@ -1,12 +1,15 @@
 version: "3.9"
 services:
-  node:
+  ton-node:
     image: ton-node:latest
     build:
       context: .
-      dockerfile: Dockerfile.local
+      dockerfile: Dockerfile
       args:
         GLOBAL_CONFIG_URL: ${GLOBAL_CONFIG_URL}
+        TELEMETRY: ${TELEMETRY}
+        IGNORE_MINIMAL_REQS: ${IGNORE_MINIMAL_REQS}
+        DUMP: ${DUMP}
     restart: always
     init: true
     tty: true

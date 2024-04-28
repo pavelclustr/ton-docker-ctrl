@@ -1,27 +1,26 @@
 FROM ubuntu:20.04
 
 ARG GLOBAL_CONFIG_URL
+ARG TELEMETRY
+ARG IGNORE_MINIMAL_REQS
+ARG DUMP
 
-# setup locale and timezone
+
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y locales
-# install cmake
-RUN apt-get --yes install cmake make git wget
+RUN apt-get update -y && apt-get install -y locales cmake make git wget python3-dev python3-pip python3-wheel nano htop iproute2
 
-# install python
-RUN apt-get --yes update
-RUN apt-get --yes install python3-dev python3-pip python3-wheel
+# Add scripts
+ADD scripts/ /scripts/
 
-# install systemctl
+# Install systemctl
 RUN wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py \
      -O /usr/bin/systemctl && chmod +x /usr/bin/systemctl
-RUN wget https://raw.githubusercontent.com/ton-blockchain/mytonctrl/mytonctrl2/scripts/install.sh 
-RUN /bin/bash install.sh -i -b mytonctrl2 -c ${GLOBAL_CONFIG_URL}
 
-RUN apt install --yes nano htop iproute2
+# Install mytonstrl
+RUN wget https://raw.githubusercontent.com/ton-blockchain/mytonctrl/mytonctrl2/scripts/install.sh
+RUN /bin/bash /scripts/eval_and_install.sh
 
-# patch mytoncrtl
-ADD scripts/ /scripts/
+# Patch mytoncrtl
 RUN python3 /scripts/patch_baseline.py
 
 WORKDIR /root
