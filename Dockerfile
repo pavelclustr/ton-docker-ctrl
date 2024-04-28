@@ -12,11 +12,11 @@ RUN apt-get update -y && apt-get install -y locales cmake make git wget python3-
 ADD scripts/ /scripts/
 
 # Install systemctl
-RUN wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py --no-check-certificate\
+RUN wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py \
      -O /usr/bin/systemctl && chmod +x /usr/bin/systemctl
 
 # Install mytonstrl
-RUN wget https://raw.githubusercontent.com/ton-blockchain/mytonctrl/mytonctrl2/scripts/install.sh --no-check-certificate
+RUN wget https://raw.githubusercontent.com/ton-blockchain/mytonctrl/mytonctrl2/scripts/install.sh 
 RUN /bin/bash /scripts/eval_and_install.sh
 
 # Patch mytoncrtl
