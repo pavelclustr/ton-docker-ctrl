@@ -5,7 +5,6 @@ ARG TELEMETRY
 ARG IGNORE_MINIMAL_REQS
 ARG DUMP
 
-
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y && apt-get install -y locales cmake make git wget python3-dev python3-pip python3-wheel nano htop iproute2
 
@@ -13,11 +12,11 @@ RUN apt-get update -y && apt-get install -y locales cmake make git wget python3-
 ADD scripts/ /scripts/
 
 # Install systemctl
-RUN wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py \
+RUN wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py --no-check-certificate\
      -O /usr/bin/systemctl && chmod +x /usr/bin/systemctl
 
 # Install mytonstrl
-RUN wget https://raw.githubusercontent.com/ton-blockchain/mytonctrl/mytonctrl2/scripts/install.sh
+RUN wget https://raw.githubusercontent.com/ton-blockchain/mytonctrl/mytonctrl2/scripts/install.sh --no-check-certificate
 RUN /bin/bash /scripts/eval_and_install.sh
 
 # Patch mytoncrtl
