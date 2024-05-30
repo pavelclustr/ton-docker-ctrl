@@ -16,7 +16,7 @@ services:
     tty: true
     volumes:
       - ton:/var/ton-work
-      - mytoncore:/home/tonuser/.local/share/mytoncore
+      - mytoncore:/usr/local/bin/mytoncore
     network_mode: host
     environment:
       GLOBAL_CONFIG_URL: ${GLOBAL_CONFIG_URL}

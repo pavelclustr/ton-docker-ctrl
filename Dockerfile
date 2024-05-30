@@ -86,5 +86,6 @@ RUN wget -nv https://raw.githubusercontent.com/gdraheim/docker-systemctl-replace
     && sed -i 's/\[Service\]/\[Service\]\nStandardOutput=null\nStandardError=null/' /etc/systemd/system/validator.service \
     && sed -i 's/\[Service\]/\[Service\]\nStandardOutput=null\nStandardError=null/' /etc/systemd/system/mytoncore.service
 
+VOLUME ["/var/ton-work", "/usr/local/bin/mytoncore"]
 COPY --chmod=755 scripts/entrypoint.sh/ /scripts/entrypoint.sh
 ENTRYPOINT ["/scripts/entrypoint.sh"]
