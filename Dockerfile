@@ -60,7 +60,7 @@ ARG DUMP=false
 ARG MODE=validator
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y wget gcc libsecp256k1-dev libsodium-dev liblz4-dev python3-dev python3-pip sudo git fio iproute2 \
+    && apt-get install --no-install-recommends -y wget gcc libsecp256k1-dev libsodium-dev liblz4-dev python3-dev python3-pip sudo git fio iproute2 plzip pv curl \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /var/ton-work/db/static /var/ton-work/db/import
 
