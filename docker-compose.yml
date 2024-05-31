@@ -10,7 +10,6 @@ services:
         MYTONCTRL_VERSION: ${MYTONCTRL_VERSION}
         TELEMETRY: ${TELEMETRY}
         IGNORE_MINIMAL_REQS: ${IGNORE_MINIMAL_REQS}
-        DUMP: ${DUMP}
         MODE: ${MODE}
     restart: always
     tty: true
