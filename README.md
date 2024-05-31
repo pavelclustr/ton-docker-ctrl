@@ -18,7 +18,6 @@ Build environment variables (are configured in the .env file):
 * **MYTONCTRL_VERSION** - MyTonCtrl build branch
 * **TELEMETRY** - Enable/Disable telemetry
 * **IGNORE_MINIMAL_REQS** - Ignore hardware requirements
-* **DUMP** - Use pre-packaged dump. Reduces duration of initial synchronization.
 * **MODE** - Install MyTonCtrl with specified mode (validator or liteserver)
 
 Run MyTonCtrl v2 in Docker:
