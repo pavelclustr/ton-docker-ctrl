@@ -82,9 +82,10 @@ RUN wget -nv https://raw.githubusercontent.com/gdraheim/docker-systemctl-replace
     && pip3 install --no-cache-dir -U . \
     && python3 -m mytoninstaller -u root -t ${TELEMETRY} --dump ${DUMP} -m ${MODE} \
     && ln -sf /proc/$$/fd/1 /usr/local/bin/mytoncore/mytoncore.log \
+    && ln -sf /proc/$$/fd/1 /var/log/syslog \
     && sed -i 's/--logname \/var\/ton-work\/log//g; s/--verbosity 1/--verbosity 3/g' /etc/systemd/system/validator.service \
-    && sed -i 's/\[Service\]/\[Service\]\nStandardOutput=null\nStandardError=null/' /etc/systemd/system/validator.service \
-    && sed -i 's/\[Service\]/\[Service\]\nStandardOutput=null\nStandardError=null/' /etc/systemd/system/mytoncore.service
+    && sed -i 's/\[Service\]/\[Service\]\nStandardOutput=null\nStandardError=syslog/' /etc/systemd/system/validator.service \
+    && sed -i 's/\[Service\]/\[Service\]\nStandardOutput=null\nStandardError=syslog/' /etc/systemd/system/mytoncore.service
 
 VOLUME ["/var/ton-work", "/usr/local/bin/mytoncore"]
 COPY --chmod=755 scripts/entrypoint.sh/ /scripts/entrypoint.sh
